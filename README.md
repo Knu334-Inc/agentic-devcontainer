@@ -1,18 +1,20 @@
 # Claude Code DevContainer
 
 TypeScriptを使用したClaude Code向けDevContainerテンプレート。
-デフォルトで(Github MCP)[https://github.com/github/github-mcp-server]（Github操作用）と(Serena MCP)[https://github.com/oraios/serena]（トークン消費改善用）をHTTPモードでセットアップする。
+デフォルトで[Github MCP](https://github.com/github/github-mcp-server)（Github操作用）と[Serena MCP](https://github.com/oraios/serena)（トークン消費改善用）をHTTPモードでセットアップする。
 
 ## 前提要件
 
-- (Docker)[https://www.docker.com/ja-jp/] がインストール済みであること
-- VS Code に (Dev Container拡張機能)[https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers]がインストール済みであること
+- [Docker](https://www.docker.com/ja-jp/) がインストール済みであること
+- VS Code に [Dev Container拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)がインストール済みであること
 
 ## 要修正箇所
 
-- **CLAUDE.md** — プロジェクト概要を記載する必要あり
-- **.devcontainer/.env.sample** — .envにコピーの上、GITHUB_PERSONAL_ACCESS_TOKENとPJ_NAMEを設定する必要あり
-- **.devcontainer/init-firewall.sh** — Claude Codeのアクセス制限のため指定ドメイン以外へのアクセスを拒否している。許可ドメインを追加する場合は`# Resolve and add other allowed domains`セクションにドメイン追加する。デフォルトでは`Github``Google``Anthropic API``VSCode関連``NPMレジストリ`を許可。
+- **CLAUDE.md** — プロジェクト概要を記載する必要あり。
+- **.devcontainer/.env.sample** — .envにコピーの上、GITHUB_PERSONAL_ACCESS_TOKENとPJ_NAMEを設定する必要あり。
+- **.devcontainer/init-firewall.sh** — Claude Codeのアクセス制限のため指定ドメイン以外へのアクセスを拒否している。
+許可ドメインを追加する場合は`# Resolve and add other allowed domains`セクションにドメイン追加する。
+デフォルトでは`Github``Google``Anthropic API``VSCode関連``NPMレジストリ`を許可。
 - **.devcontainer/devcontainer.json** — DevContainer内で使用したいVS Code拡張機能がある場合は`customizations.vscode.extensions`に拡張機能の識別子を追加する。
 
 ## 使用方法
