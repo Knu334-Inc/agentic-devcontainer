@@ -12,7 +12,6 @@ services:
     cap_add:
       - NET_ADMIN
       - NET_RAW
-    platform: linux/arm64
     volumes:
       - claude-code-bashhistory:/commandhistory
       - claude-code-config:/home/node/.claude
@@ -26,7 +25,6 @@ services:
 
   github-mcp:
     image: ghcr.io/github/github-mcp-server
-    platform: linux/arm64
     command: ["http", "--port", "8080"]
     expose:
       - "8080"
@@ -36,7 +34,6 @@ services:
 
   serena-mcp:
     image: ghcr.io/oraios/serena:latest
-    platform: linux/arm64
     volumes:
       - serena-config:/workspaces/serena/config
       - ${LOCAL_WORKSPACE_FOLDER:-.}/..:/workspaces/projects/${PJ_NAME}

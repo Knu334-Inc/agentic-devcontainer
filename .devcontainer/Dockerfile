@@ -1,3 +1,4 @@
+ARG IMAGEARCH
 FROM ${IMAGEARCH:-arm64v8/}node:25.8.1-trixie-slim
 
 ARG TZ
