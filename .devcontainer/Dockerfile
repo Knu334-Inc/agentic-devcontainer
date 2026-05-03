@@ -6,6 +6,7 @@ ENV TZ="$TZ"
 
 # Install basic development tools and iptables/ipset
 RUN apt-get update && apt-get install -y --no-install-recommends \
+  locales \
   less \
   git \
   gh \
@@ -29,6 +30,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   curl \
   ca-certificates \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Generate the Japanese UTF-8 locale used by the shell and CLI tools.
+RUN sed -i 's/^# *ja_JP.UTF-8 UTF-8/ja_JP.UTF-8 UTF-8/' /etc/locale.gen && \
+  locale-gen ja_JP.UTF-8 && \
+  update-locale LANG=ja_JP.UTF-8 LC_ALL=ja_JP.UTF-8
+
+ENV LANG=ja_JP.UTF-8
+ENV LANGUAGE=ja_JP:ja
+ENV LC_ALL=ja_JP.UTF-8
 
 # Ensure default node user has access to /usr/local/share
 RUN chown -R node:node /usr/local/share
