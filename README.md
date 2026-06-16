@@ -1,8 +1,8 @@
 # agentic-devcontainer
 
 Claude Code / Codex CLIプロジェクト向けDevContainerテンプレート。  
-デフォルトで[Serena MCP](https://github.com/oraios/serena)（トークン消費改善用）をHTTPモードでセットアップする。  
-Claude Code・Codex CLI 両方から Serena MCP・Context7 を利用可能。
+デフォルトで[Context7](https://context7.com/)・[Playwright CLI](https://playwright.dev/)をセットアップする。  
+Claude Code・Codex CLI 両方から Context7 を利用可能。
 
 ## 前提要件
 
@@ -12,7 +12,7 @@ Claude Code・Codex CLI 両方から Serena MCP・Context7 を利用可能。
 ## 要修正箇所
 
 - **CLAUDE.md** — プロジェクト概要を記載する必要あり。`AGENTS.md` はこのファイルへのシンボリックリンクのため、Codex CLI も同じ内容を参照する。
-- **.devcontainer/.env.sample** — .envにコピーの上、`GH_TOKEN`・`GIT_USER_EMAIL`・`GIT_USER_NAME`・`PJ_NAME` を設定する必要あり（`CONTEXT7_API_KEY` はContext7を利用する場合、`OPENAI_API_KEY` はCodex CLIを利用する場合に設定）。
+- **.devcontainer/.env.sample** — .envにコピーの上、`GH_TOKEN`・`GIT_USER_EMAIL`・`GIT_USER_NAME` を設定する必要あり（`CONTEXT7_API_KEY` はContext7を利用する場合、`OPENAI_API_KEY` はCodex CLIを利用する場合に設定）。
 - **.devcontainer/init-firewall.sh** — Claude Codeのアクセス制限のため指定ドメイン以外へのアクセスを拒否している。  
 許可ドメインを追加する場合は`# Resolve and add other allowed domains`セクションにドメイン追加する。  
 デフォルトでは`Github` `Google` `Anthropic API` `VSCode関連` `NPMレジストリ` `Context7` `OpenAI API`を許可。
@@ -45,10 +45,6 @@ git clone <新規リポジトリのGithubリンク>
 7. VS Codeでローカルリポジトリを開く。
 8. コンテナーで現在のフォルダを開く を実行する。
 9. ターミナルを開くとClaude Codeが使用可能となる。
-10. Serena MCPのセットアップをClaude Codeに実行させる。
-```
-mcp__serena__onboardingを実行して
-```
 
 ## テンプレートの更新取り込み方法
 

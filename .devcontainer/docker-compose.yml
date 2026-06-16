@@ -28,18 +28,6 @@ services:
     networks:
       - mcp-net
 
-  serena-mcp:
-    image: ghcr.io/oraios/serena:latest
-    volumes:
-      - serena-config:/workspaces/serena/config
-      - ${LOCAL_WORKSPACE_FOLDER:-.}/..:/workspaces/projects/${PJ_NAME}
-    command: ["serena", "start-mcp-server", "--transport", "streamable-http", "--host", "0.0.0.0", "--port", "8080", "--project", "/workspaces/projects/${PJ_NAME}"]
-    expose:
-      - "8080"
-    networks:
-      - mcp-net
-    restart: unless-stopped
-
 networks:
   mcp-net:
     driver: bridge
@@ -49,4 +37,3 @@ volumes:
   claude-code-config:
   codex-config:
   codex-agents:
-  serena-config:
