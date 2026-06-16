@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "serena": {
-      "type": "http",
-      "url": "http://serena-mcp:8080/mcp"
-    }
-  }
-}

@@ -1,6 +1,3 @@
-[mcp_servers.serena]
-url = "http://serena-mcp:8080/mcp"
-
 [[hooks.PreToolUse]]
 matcher = "Bash"
 

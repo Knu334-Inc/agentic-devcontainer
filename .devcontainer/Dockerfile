@@ -73,6 +73,10 @@ RUN ARCH=$(dpkg --print-architecture) && \
 # Install Context7
 RUN npm install -g ctx7
 
+# Install Playwright CLI
+RUN npm install -g @playwright/cli@latest && \
+  npx playwright install-deps
+
 # Install Codex
 RUN npm i -g @openai/codex
 
@@ -80,9 +84,10 @@ RUN npm i -g @openai/codex
 COPY init-firewall.sh /usr/local/bin/
 COPY init-context7.sh /usr/local/bin/
 COPY init-git.sh /usr/local/bin/
+COPY init-playwright-cli.sh /usr/local/bin/
 COPY init-statusline.sh /usr/local/bin/
 COPY statusline.sh /usr/local/lib/claude-statusline.sh
-RUN chmod +x /usr/local/bin/init-firewall.sh /usr/local/bin/init-context7.sh /usr/local/bin/init-git.sh /usr/local/bin/init-statusline.sh /usr/local/lib/claude-statusline.sh && \
+RUN chmod +x /usr/local/bin/init-firewall.sh /usr/local/bin/init-context7.sh /usr/local/bin/init-git.sh /usr/local/bin/init-playwright-cli.sh /usr/local/bin/init-statusline.sh /usr/local/lib/claude-statusline.sh && \
   echo "node ALL=(root) NOPASSWD: /usr/local/bin/init-firewall.sh" > /etc/sudoers.d/node-firewall && \
   chmod 0440 /etc/sudoers.d/node-firewall
 
@@ -117,3 +122,6 @@ RUN curl -fsSL https://claude.ai/install.sh | zsh && \
 
 RUN echo 'alias claude="claude --dangerously-skip-permissions"' >> ~/.zshrc && \
   echo 'alias codex="codex --dangerously-bypass-approvals-and-sandbox"' >> ~/.zshrc
+
+# Install Chromium for Playwright
+RUN playwright-cli install-browser chromium
