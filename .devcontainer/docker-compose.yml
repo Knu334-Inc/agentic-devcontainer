@@ -13,8 +13,6 @@ services:
     cap_add:
       - NET_ADMIN
       - NET_RAW
-    security_opt:
-      - seccomp=./seccomp.json
     volumes:
       - claude-code-bashhistory:/commandhistory
       - claude-code-config:/home/node/.claude
