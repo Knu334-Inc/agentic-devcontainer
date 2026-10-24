@@ -1,6 +1,13 @@
+sandbox_mode = "danger-full-access"
+approval_policy = "on-request"
+
 [[hooks.PreToolUse]]
 matcher = "Bash"
 
 [[hooks.PreToolUse.hooks]]
 type = "command"
 command = "bash /workspace/.codex/hooks/check-bash-command.sh"
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "git-branch", "five-hour-limit", "weekly-limit", "context-used"]
+status_line_use_colors = true
